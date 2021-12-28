@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:nft_charities/custom_widgets/bottom_bar.dart';
 import 'package:nft_charities/custom_widgets/top_nav.dart';
 
-class About extends StatefulWidget {
-  const About({Key? key}) : super(key: key);
+class Roadmap extends StatefulWidget {
+  const Roadmap({Key? key}) : super(key: key);
 
   @override
-  _AboutState createState() => _AboutState();
+  _RoadmapState createState() => _RoadmapState();
 }
 
-class _AboutState extends State<About> with TickerProviderStateMixin {
+class _RoadmapState extends State<Roadmap> with TickerProviderStateMixin {
   bool _showBackToTopButton = false;
 
   late ScrollController _scrollController;
@@ -46,8 +47,9 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
-          children: [
+          children: const [
             TopNav(),
+            BottomBar(),
           ],
         ),
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nft_charities/custom_widgets/top_nav_button.dart';
-import '../home.dart';
-import '../history.dart';
-import '../roadmap.dart';
-import '../about.dart';
+import '../pages/home.dart';
+import '../pages/history.dart';
+import '../pages/roadmap.dart';
+import '../pages/about.dart';
 
 class TopNav extends StatelessWidget {
   const TopNav({Key? key}) : super(key: key);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_charities/custom_widgets/bottom_bar.dart';
 import 'package:nft_charities/custom_widgets/top_nav.dart';
 
 class History extends StatefulWidget {
@@ -47,7 +48,9 @@ class _HistoryState extends State<History> with TickerProviderStateMixin {
         controller: _scrollController,
           child: Column(
             children: [
-              TopNav(),
+              const TopNav(),
+              _buildBody(),
+              const BottomBar(),
             ],
           ),
       ),
@@ -55,6 +58,14 @@ class _HistoryState extends State<History> with TickerProviderStateMixin {
         onPressed: _scrollToTop,
         child: const Icon(Icons.arrow_upward),
       ),
+    );
+  }
+
+  Widget _buildBody() {
+    return Container(
+      color: Colors.black,
+      height: MediaQuery.of(context).size.height - 70 - 48,
+      width: MediaQuery.of(context).size.width,
     );
   }
 }
