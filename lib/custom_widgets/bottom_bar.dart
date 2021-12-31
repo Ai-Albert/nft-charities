@@ -6,41 +6,44 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 10.0,
-          width: MediaQuery.of(context).size.width,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Text(
-                '© NFT-Charities, LLC',
-                style: TextStyle(
-                  fontSize: 10,
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10.0,
+            width: MediaQuery.of(context).size.width,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Text(
+                  '© NFT-Charities, LLC',
+                  style: TextStyle(
+                    fontSize: 10,
+                  ),
                 ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                BottomBarButton(title: 'Privacy Policy', url: ''),
-                SizedBox(width: 30),
-                BottomBarButton(title: 'Terms of Service', url: ''),
-                SizedBox(width: 20),
-              ],
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 10.0,
-          width: MediaQuery.of(context).size.width,
-        ),
-      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  BottomBarButton(title: 'Privacy Policy', url: ''),
+                  SizedBox(width: 30),
+                  BottomBarButton(title: 'Terms of Service', url: ''),
+                  SizedBox(width: 20),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10.0,
+            width: MediaQuery.of(context).size.width,
+          ),
+        ],
+      ),
     );
   }
 }

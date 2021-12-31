@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nft_charities/custom_widgets/bottom_bar.dart';
-import 'package:nft_charities/custom_widgets/top_nav.dart';
+import 'package:nft_charities/custom_widgets/top_bar.dart';
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
 
   // This function is triggered when the user presses the back-to-top button
   void _scrollToTop() {
-    _scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.linear);
+    _scrollController.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.linear);
   }
 
   @override
@@ -48,7 +48,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
         controller: _scrollController,
         child: Column(
           children: const [
-            TopNav(),
+            TopBar(),
             BottomBar(),
           ],
         ),
@@ -56,6 +56,8 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
       floatingActionButton: _showBackToTopButton == false ? null : FloatingActionButton(
         onPressed: _scrollToTop,
         child: const Icon(Icons.arrow_upward),
+        backgroundColor: Colors.grey[900],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
   }

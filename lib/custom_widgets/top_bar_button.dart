@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TopNavButton extends StatelessWidget {
-  const TopNavButton({Key? key, required this.title, required this.builder}) : super(key: key);
+class TopBarButton extends StatelessWidget {
+  const TopBarButton({Key? key, required this.title, required this.builder}) : super(key: key);
 
   final String title;
   final Widget Function(BuildContext, Animation, Animation) builder;
@@ -18,6 +18,7 @@ class TopNavButton extends StatelessWidget {
       ),
       style: ButtonStyle(
         overlayColor: MaterialStateProperty.all(Colors.transparent),
+        minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width / 15, 0)),
       ),
       onPressed: () => Navigator.pushReplacement(
         context,

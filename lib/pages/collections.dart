@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:nft_charities/custom_widgets/bottom_bar.dart';
-import 'package:nft_charities/custom_widgets/top_nav.dart';
+import 'package:nft_charities/custom_widgets/top_bar.dart';
 
-class History extends StatefulWidget {
-  const History({Key? key}) : super(key: key);
+class Collections extends StatefulWidget {
+  const Collections({Key? key}) : super(key: key);
 
   @override
-  _HistoryState createState() => _HistoryState();
+  _CollectionsState createState() => _CollectionsState();
 }
 
-class _HistoryState extends State<History> with TickerProviderStateMixin {
+class _CollectionsState extends State<Collections> with TickerProviderStateMixin {
   bool _showBackToTopButton = false;
 
   late ScrollController _scrollController;
@@ -38,7 +38,7 @@ class _HistoryState extends State<History> with TickerProviderStateMixin {
 
   // This function is triggered when the user presses the back-to-top button
   void _scrollToTop() {
-    _scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.linear);
+    _scrollController.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.linear);
   }
 
   @override
@@ -48,7 +48,7 @@ class _HistoryState extends State<History> with TickerProviderStateMixin {
         controller: _scrollController,
           child: Column(
             children: [
-              const TopNav(),
+              const TopBar(),
               _buildBody(),
               const BottomBar(),
             ],
@@ -57,6 +57,8 @@ class _HistoryState extends State<History> with TickerProviderStateMixin {
       floatingActionButton: _showBackToTopButton == false ? null : FloatingActionButton(
         onPressed: _scrollToTop,
         child: const Icon(Icons.arrow_upward),
+        backgroundColor: Colors.grey[900],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
   }
