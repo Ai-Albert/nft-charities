@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TopBarButton extends StatelessWidget {
-  const TopBarButton({Key? key, required this.title, required this.builder}) : super(key: key);
+  // const TopBarButton({Key? key, required this.title, required this.builder}) : super(key: key);
+  const TopBarButton({Key? key, required this.title, required this.onPressed});
 
   final String title;
-  final Widget Function(BuildContext, Animation, Animation) builder;
+  // final Widget Function(BuildContext, Animation, Animation) builder;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +22,14 @@ class TopBarButton extends StatelessWidget {
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width / 15, 0)),
       ),
-      onPressed: () => Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: builder,
-          transitionDuration: Duration.zero,
-        ),
-      ),
+      // onPressed: () => Navigator.pushReplacement(
+      //   context,
+      //   PageRouteBuilder(
+      //     pageBuilder: builder,
+      //     transitionDuration: Duration.zero,
+      //   ),
+      // ),
+      onPressed: onPressed,
     );
   }
 }

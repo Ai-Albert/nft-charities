@@ -9,12 +9,14 @@ class ListItemsBuilder<T> extends StatelessWidget {
     required this.snapshot,
     required this.itemBuilder,
     required this.scrollController,
+    required this.direction,
   }) : super(key: key);
 
   final BuildContext context;
   final AsyncSnapshot<List<T>> snapshot;
   final ItemWidgetBuilder<T> itemBuilder;
   final ScrollController scrollController;
+  final String direction;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,12 @@ class ListItemsBuilder<T> extends StatelessWidget {
       if (items.isNotEmpty) {
         return _buildList(items);
       } else {
-        return Container();
+        return Container(color: Colors.white);
       }
     } else if (snapshot.hasError) {
-      return Container();
+      return Container(color: Colors.red);
     }
-    return Container();
+    return Container(color: Colors.yellow);
   }
 
   Widget _buildList(List<T> items) {
@@ -36,7 +38,7 @@ class ListItemsBuilder<T> extends StatelessWidget {
     // builder only builds the items that are visible on screen instead of everything
     // We use more indexes than exist because normally no dividers are placed before and after the list
     return ListView.separated(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: direction == 'horizontal' ? Axis.horizontal : Axis.vertical,
       controller: scrollController,
       itemCount: items.length,
       // padding: EdgeInsets.only(

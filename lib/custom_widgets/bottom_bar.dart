@@ -17,25 +17,26 @@ class BottomBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Padding(
+            children: const [
+              Padding(
                 padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Text(
-                  '© NFT-Charities, LLC',
+                  '© NFT-Charities',
                   style: TextStyle(
                     fontSize: 10,
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  BottomBarButton(title: 'Privacy Policy', url: ''),
-                  SizedBox(width: 30),
-                  BottomBarButton(title: 'Terms of Service', url: ''),
-                  SizedBox(width: 20),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: const [
+              //     BottomBarButton(title: 'Privacy Policy', url: ''),
+              //     SizedBox(width: 30),
+              //     BottomBarButton(title: 'Terms of Service', url: ''),
+              //     SizedBox(width: 20),
+              //   ],
+              // ),
+              SizedBox(height: 20),
             ],
           ),
           SizedBox(

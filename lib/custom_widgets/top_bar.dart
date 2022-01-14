@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:nft_charities/custom_widgets/top_bar_button.dart';
+import 'package:nft_charities/services/database.dart';
 import '../pages/home.dart';
 import '../pages/collections.dart';
 import '../pages/roadmap.dart';
 import '../pages/about.dart';
 
 class TopBar extends StatelessWidget {
-  const TopBar({Key? key}) : super(key: key);
+  TopBar({
+    Key? key,
+    required this.home,
+    required this.roadmap,
+    required this.collections,
+    required this.about,
+  }) : super(key: key);
+
+  final VoidCallback home;
+  final VoidCallback roadmap;
+  final VoidCallback collections;
+  final VoidCallback about;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +41,17 @@ class TopBar extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TopBarButton(title: 'Home', builder: (_, __, ___) => const Home()),
+                  // TopBarButton(title: 'Home', builder: (_, __, ___) => Home(database: database)),
+                  TopBarButton(title: 'Home', onPressed: home),
                   const SizedBox(width: 50),
-                  TopBarButton(title: 'Roadmap', builder: (_, __, ___) => const Roadmap()),
+                  // TopBarButton(title: 'Roadmap', builder: (_, __, ___) => Roadmap(database: database)),
+                  TopBarButton(title: 'Roadmap', onPressed: roadmap),
                   const SizedBox(width: 50),
-                  TopBarButton(title: 'Collections', builder: (_, __, ___) => const Collections()),
+                  // TopBarButton(title: 'Collections', builder: (_, __, ___) => Collections(database: database)),
+                  TopBarButton(title: 'Collections', onPressed: collections),
                   const SizedBox(width: 50),
-                  TopBarButton(title: 'About', builder: (_, __, ___) => const About()),
+                  // TopBarButton(title: 'About', builder: (_, __, ___) => About(database: database)),
+                  TopBarButton(title: 'About', onPressed: about),
                 ],
               ),
               const Padding(

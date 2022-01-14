@@ -5,6 +5,7 @@ import 'package:nft_charities/custom_widgets/bottom_bar.dart';
 import 'package:nft_charities/custom_widgets/primary_button.dart';
 import 'package:nft_charities/custom_widgets/secondary_button.dart';
 import 'package:nft_charities/custom_widgets/top_bar.dart';
+import 'package:nft_charities/services/database.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,69 +16,28 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
-  bool _showBackToTopButton = false;
+class _HomeState extends State<Home> {
 
-  late ScrollController _scrollController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {
-          if (_scrollController.offset >= 400) {
-            _showBackToTopButton = true; // show the back-to-top button
-          } else {
-            _showBackToTopButton = false; // hide the back-to-top button
-          }
-        });
-      });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose(); // dispose the controller
-    super.dispose();
-  }
-
-  // This function is triggered when the user presses the back-to-top button
-  void _scrollToTop() {
-    _scrollController.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.linear);
-  }
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            const TopBar(),
-            _opening(),
-            _mission(),
-            SizedBox(
-              child: const Divider(
-                thickness: 2,
-                color: Color.fromRGBO(40, 40, 40, 1),
-              ),
-              width: MediaQuery.of(context).size.width - 200,
+    return SingleChildScrollView(
+      controller: _scrollController,
+      child: Column(
+        children: [
+          _opening(),
+          _mission(),
+          SizedBox(
+            child: const Divider(
+              thickness: 2,
+              color: Color.fromRGBO(40, 40, 40, 1),
             ),
-            _social(),
-            const BottomBar(),
-          ],
-        ),
+            width: MediaQuery.of(context).size.width - 200,
+          ),
+          _social(),
+        ],
       ),
-      floatingActionButton: _showBackToTopButton == false ?
-        null :
-        FloatingActionButton(
-          onPressed: _scrollToTop,
-          child: const Icon(Icons.arrow_upward),
-          backgroundColor: Colors.grey[850],
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
     );
   }
 
@@ -141,6 +101,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             style: TextStyle(
               color: Colors.white,
               fontSize: 30,
+              letterSpacing: 2,
             ),
           ),
           const SizedBox(height: 50),
@@ -242,14 +203,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         const SizedBox(width: 100),
         SizedBox(
           width: MediaQuery.of(context).size.width / 2 - 250,
-          // child: Positioned.fill( TODO: put the image of a heart
-          //   child: Image.asset(
-          //     'bg1.png',
-          //     width: MediaQuery.of(context).size.width,
-          //     height: 500,
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
+          child: Positioned.fill(
+            child: Image.asset(
+              'illustrations/giving.png',
+              height: 400,
+              fit: BoxFit.contain,
+            ),
+          ),
         ),
       ],
     );
@@ -261,14 +221,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width / 2 - 250,
-          // child: Positioned.fill( TODO: put the image of an ethereum coin shining
-          //   child: Image.asset(
-          //     'bg1.png',
-          //     width: MediaQuery.of(context).size.width,
-          //     height: 500,
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
+          child: Positioned.fill(
+            child: Image.asset(
+              'illustrations/eth_coin.png',
+              height: 400,
+              fit: BoxFit.contain,
+            ),
+          ),
         ),
         const SizedBox(width: 100),
         SizedBox(
@@ -292,7 +251,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               const Text(
                 '\u2022 75% of initial sales proceeds are equally donated to the charities listed in the collection description\n'
                   '\u2022 75% of the 10% secondary sale royalties are also donated\n'
-                  '\u2022 The rest of the proceeds go towards marketing, development, etc... costs\n',
+                  '\u2022 The rest of the proceeds go towards marketing, development, etc... costs\n'
+                  '\u2022 Receipts/proof of donations will be posted on our Twitter at the end of each week in which we receive proceeds\n',
                 style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1,color: Colors.white),
               ),
             ],
@@ -346,7 +306,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             children: [
               _socialButton('socials/instagram.png', 'Instagram', 'https://www.instagram.com/nft.charities/'),
               _socialButton('socials/twitter.png', 'Twitter', 'https://twitter.com/nft_charities'),
-              // _socialButton('socials/facebook.png', 'Facebook', ''), // TODO: uncomment when facebook and tiktok are set up
+              // _socialButton('socials/facebook.png', 'Facebook', ''), // TODO: update when facebook and tiktok are set up
               // _socialButton('socials/tiktok.png', 'TikTok', ''),
             ],
           ),

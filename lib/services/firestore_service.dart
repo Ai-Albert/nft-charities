@@ -25,20 +25,12 @@ class FirestoreService {
     required String path,
     required T Function(Map<String, dynamic> data, String documentId) builder,
     Query Function(Query query)? queryBuilder,
-    String? filterSource,
-    String? filter,
     int Function(T lhs, T rhs)? sort,
   }) {
     // Here the orderBy clause was added for this app specifically so DELETE for other apps
     Query query = FirebaseFirestore.instance.collection(path);
     if (queryBuilder != null) {
       query = queryBuilder(query);
-    }
-    if (filterSource != null && filter == 'past') {
-      query = query.where(filterSource, isLessThanOrEqualTo: DateTime.now());
-    }
-    else if (filterSource != null && filter == 'future') {
-      query = query.where(filterSource, isGreaterThan: DateTime.now());
     }
     final snapshots = query.snapshots();
     return snapshots.map((snapshot) {
