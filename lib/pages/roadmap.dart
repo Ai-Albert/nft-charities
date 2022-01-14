@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nft_charities/custom_widgets/bottom_bar.dart';
@@ -18,6 +20,7 @@ class Roadmap extends StatefulWidget {
 
 class _RoadmapState extends State<Roadmap> {
   final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollbar = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -110,18 +113,25 @@ class _RoadmapState extends State<Roadmap> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 300,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        controller: _scrollController,
-        itemCount: items.length,
-        // padding: EdgeInsets.only(
-        //   top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
-        //   bottom: 62 + MediaQuery.of(context).padding.bottom,
-        // ),
-        // separatorBuilder: (context, index) => const Divider(height: 0.5),
-        itemBuilder: (context, index) {
-          return MilestoneListTile(milestone: items[index]);
-        },
+      child: RawScrollbar(
+        isAlwaysShown: true,
+        thumbColor: Colors.grey[900],
+        interactive: true,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+        controller: _scrollbar,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          controller: _scrollbar,
+          itemCount: items.length,
+          // padding: EdgeInsets.only(
+          //   top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
+          //   bottom: 62 + MediaQuery.of(context).padding.bottom,
+          // ),
+          // separatorBuilder: (context, index) => const Divider(height: 0.5),
+          itemBuilder: (context, index) {
+            return MilestoneListTile(milestone: items[index]);
+          },
+        ),
       ),
     );
   }
