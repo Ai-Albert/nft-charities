@@ -199,7 +199,7 @@ class _AboutState extends State<About> {
             children: [
               const SizedBox(width: 100),
               _bio(
-                'headshots/albert-ai.jpg',
+                'headshots/michael-northrup.jpg',
                 'Michael J. Northrup',
                 'Co-founder, Marketing Lead',
                 'Michael is a double major, studying for his Masters in Business Administration and a B.S. in Public Accounting. '
