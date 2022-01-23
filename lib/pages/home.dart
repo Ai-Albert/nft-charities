@@ -57,13 +57,19 @@ class _HomeState extends State<Home> {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              'ocean.jpg',
-              height: MediaQuery.of(context).size.height - 70,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.fill,
-            ),
+          // Positioned.fill(
+          //   child: Image.asset(
+          //     'ocean.jpg',
+          //     height: MediaQuery.of(context).size.height - 70,
+          //     width: MediaQuery.of(context).size.width,
+          //     fit: BoxFit.fill,
+          //   ),
+          // ),
+          Image.asset(
+            'ocean.jpg',
+            height: MediaQuery.of(context).size.height - 70,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.fill,
           ),
           ClipRect(
             child: BackdropFilter(
@@ -86,7 +92,7 @@ class _HomeState extends State<Home> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          const SelectableText(
             'The world\'s first NFT-based fundraiser for charities',
             style: TextStyle(
               color: Colors.white,
@@ -96,7 +102,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           const SizedBox(height: 75),
-          const Text(
+          const SelectableText(
             'Help clean the ocean today with our most recent collection (minting on OpenSea)', // TODO: change this message every time a new collection drops
             style: TextStyle(
               color: Colors.white,
@@ -189,7 +195,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
               const SizedBox(height: 30),
-              const Text(
+              const SelectableText(
                 'Most NFTs on the market don\'t have any utility. '
                     'They don\'t serve any purpose or have any uses. However, we at NFT Charities see an opportunity for these tokens '
                     'to impact people not only through social spaces, but through charities as well. '
@@ -203,12 +209,20 @@ class _HomeState extends State<Home> {
         const SizedBox(width: 100),
         SizedBox(
           width: MediaQuery.of(context).size.width / 2 - 250,
-          child: Positioned.fill(
-            child: Image.asset(
-              'illustrations/giving.png',
-              height: 400,
-              fit: BoxFit.contain,
-            ),
+          height: 400,
+          // child: Stack(
+          //   children: [
+          //     Positioned.fill(
+          //       // child: Image.asset(
+          //       //   'illustrations/giving.png',
+          //       //   fit: BoxFit.contain,
+          //       // ),
+          //     ),
+          //   ],
+          // ),
+          child: Image.asset(
+            'illustrations/giving.png',
+            fit: BoxFit.contain,
           ),
         ),
       ],
@@ -221,12 +235,20 @@ class _HomeState extends State<Home> {
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width / 2 - 250,
-          child: Positioned.fill(
-            child: Image.asset(
-              'illustrations/eth_coin.png',
-              height: 400,
-              fit: BoxFit.contain,
-            ),
+          height: 400,
+          // child: Stack(
+          //   children: [
+          //     Positioned.fill(
+          //       child: Image.asset(
+          //         'illustrations/eth_coin.png',
+          //         fit: BoxFit.contain,
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          child: Image.asset(
+            'illustrations/eth_coin.png',
+            fit: BoxFit.contain,
           ),
         ),
         const SizedBox(width: 100),
@@ -248,7 +270,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
               const SizedBox(height: 30),
-              const Text(
+              const SelectableText(
                 '\u2022 75% of initial sales proceeds are equally donated to the charities listed in the collection description\n'
                   '\u2022 75% of the 10% secondary sale royalties are also donated\n'
                   '\u2022 The rest of the proceeds go towards marketing, development, etc... costs\n'
@@ -353,9 +375,11 @@ class _HomeState extends State<Home> {
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       'twitter',
-          (int uid) => IFrameElement()
+          (int viewId) => IFrameElement()
             ..src = 'web/twitter.html'
-            ..style.border = "none",
+            ..style.border = "none"
+            ..style.width = '100%'
+            ..style.height = '100%',
     );
     return SizedBox(
       width: MediaQuery.of(context).size.width / 5 * 2 - 100,

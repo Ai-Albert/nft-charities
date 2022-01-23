@@ -100,13 +100,19 @@ class _AboutState extends State<About> {
       width: (MediaQuery.of(context).size.width - 300) / 3,
       child: Column(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              picture,
-              height: 200,
-              width: 200,
-              fit: BoxFit.contain,
-            ),
+          // Positioned.fill(
+          //   child: Image.asset(
+          //     picture,
+          //     height: 200,
+          //     width: 200,
+          //     fit: BoxFit.contain,
+          //   ),
+          // ),
+          Image.asset(
+            picture,
+            height: 200,
+            width: 200,
+            fit: BoxFit.contain,
           ),
           const SizedBox(height: 15),
           GradientText(
@@ -121,7 +127,7 @@ class _AboutState extends State<About> {
             ],
           ),
           const SizedBox(height: 30),
-          Text(
+          SelectableText(
             description,
             style: const TextStyle(
               color: Colors.white,
@@ -153,7 +159,7 @@ class _AboutState extends State<About> {
             ],
           ),
           const SizedBox(height: 50),
-          const Text(
+          const SelectableText(
             'It\'s no secret that most people don\'t donate significantly or regularly to charity. '
               'And many of the rich donate money to use their donations as tax write-offs. '
               'From this, we saw that there needs to be an incentive to donate. '
@@ -227,13 +233,19 @@ class _AboutState extends State<About> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Positioned.fill(
-          child: Image.asset(
-            picture,
-            height: 250,
-            width: 200,
-            fit: BoxFit.cover,
-          ),
+        // Positioned.fill(
+        //   child: Image.asset(
+        //     picture,
+        //     height: 250,
+        //     width: 200,
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+        Image.asset(
+          picture,
+          height: 250,
+          width: 200,
+          fit: BoxFit.cover,
         ),
         const SizedBox(width: 15),
         SizedBox(
@@ -255,7 +267,7 @@ class _AboutState extends State<About> {
                 ],
               ),
               const SizedBox(height: 10),
-              Text(
+              SelectableText(
                 position,
                 style: const TextStyle(
                   color: Colors.white,
@@ -264,7 +276,7 @@ class _AboutState extends State<About> {
                 ),
               ),
               const SizedBox(height: 30),
-              Text(
+              SelectableText(
                 description,
                 style: const TextStyle(
                   color: Colors.white,

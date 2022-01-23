@@ -38,7 +38,7 @@ class CollectionListTile extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 250),
-          Text(
+          SelectableText(
             collection.formattedDate,
             style: const TextStyle(
               fontSize: 20,

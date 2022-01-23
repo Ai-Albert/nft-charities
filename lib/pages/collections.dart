@@ -62,7 +62,7 @@ class _CollectionsState extends State<Collections> {
           fit: BoxFit.contain,
         ),
         const SizedBox(height: 10),
-        const Text(
+        const SelectableText(
           '0 eth ≈ \$0',
           style: TextStyle(
             fontSize: 50,
@@ -118,7 +118,7 @@ class _CollectionsState extends State<Collections> {
       child: Column(
         children: const [
           SizedBox(height: 100),
-          Text(
+          SelectableText(
             'We will be launching our first collection shortly!',
             textAlign: TextAlign.center,
             style: TextStyle(

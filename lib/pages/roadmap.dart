@@ -66,7 +66,7 @@ class _RoadmapState extends State<Roadmap> {
   Widget _message() {
     return const Padding(
       padding: EdgeInsets.fromLTRB(100, 0, 100, 0),
-      child: Text(
+      child: SelectableText(
         'As our company grows and becomes larger in the NFT space, these are some of the things that you will be helping us accomplish. '
         'Support charities by trading our collections, and these goals will become more ambitious.',
         textAlign: TextAlign.center,

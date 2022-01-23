@@ -43,7 +43,7 @@ class MilestoneListTile extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 50),
-          Text(
+          SelectableText(
             milestone.goal,
             style: const TextStyle(
               fontSize: 20,
