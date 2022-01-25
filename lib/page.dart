@@ -96,7 +96,7 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
           customScrollCursor: DefaultCustomScrollCursor(),
         ),
         keyboardScrollConfig: KeyboardScrollConfig(
-          arrowsScrollAmount: 50.0,
+          arrowsScrollAmount: 75.0,
           homeScrollDurationBuilder: (currentScrollOffset, minScrollOffset) {
             return const Duration(milliseconds: 100);
           },
