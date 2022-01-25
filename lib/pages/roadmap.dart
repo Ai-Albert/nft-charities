@@ -1,9 +1,6 @@
 import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:nft_charities/custom_widgets/bottom_bar.dart';
-import 'package:nft_charities/custom_widgets/top_bar.dart';
 import 'package:nft_charities/models/milestone.dart';
 import 'package:nft_charities/pages/helpers/milestone_list_tile.dart';
 import 'package:nft_charities/services/database.dart';

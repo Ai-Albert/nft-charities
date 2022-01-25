@@ -1,11 +1,8 @@
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:nft_charities/custom_widgets/bottom_bar.dart';
 import 'package:nft_charities/custom_widgets/primary_button.dart';
 import 'package:nft_charities/custom_widgets/secondary_button.dart';
-import 'package:nft_charities/custom_widgets/top_bar.dart';
-import 'package:nft_charities/services/database.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 

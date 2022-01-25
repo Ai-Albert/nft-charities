@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nft_charities/custom_widgets/bottom_bar.dart';
-import 'package:nft_charities/custom_widgets/top_bar.dart';
 import 'package:nft_charities/models/nft_collection.dart';
 import 'package:nft_charities/pages/helpers/collection_list_tile.dart';
 import 'package:nft_charities/services/database.dart';
@@ -17,8 +15,6 @@ class Collections extends StatefulWidget {
 }
 
 class _CollectionsState extends State<Collections> {
-  final ScrollController _scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,7 +71,7 @@ class _CollectionsState extends State<Collections> {
     return _buildCollectionItems();
   }
 
-  // TODO: fix the snapshot error that's occuring in the stream operation when reading from Firebase
+  // TODO: fix the snapshot error that's occurring in the stream operation when reading from Firebase
   // Widget _buildCollectionItems() {
   //   return StreamBuilder<List<NFTCollection>>(
   //     stream: Provider.of<Database>(context, listen: false).collectionsStream(),
