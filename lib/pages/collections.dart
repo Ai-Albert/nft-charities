@@ -21,20 +21,17 @@ class _CollectionsState extends State<Collections> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: _scrollController,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        constraints: BoxConstraints(
-          minHeight: MediaQuery.of(context).size.height - 70,
-          maxHeight: MediaQuery.of(context).size.height - 70,
-        ),
-        child: Column(
-          children: [
-            _buildDonationAmount(),
-            _buildCollections(),
-          ],
-        ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.of(context).size.height - 70,
+        maxHeight: MediaQuery.of(context).size.height - 70,
+      ),
+      child: Column(
+        children: [
+          _buildDonationAmount(),
+          _buildCollections(),
+        ],
       ),
     );
   }

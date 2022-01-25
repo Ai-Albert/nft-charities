@@ -19,47 +19,44 @@ class Roadmap extends StatefulWidget {
 }
 
 class _RoadmapState extends State<Roadmap> {
-  final ScrollController _scrollController = ScrollController();
   final ScrollController _scrollbar = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: _scrollController,
-      child: Stack(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height - 70,
-            ),
+
+    return Stack(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height - 70,
           ),
-          Column(
-            children: [
-              const SizedBox(height: 100),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: GradientText(
-                  'Milestones',
-                  style: const TextStyle(
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 3,
-                  ),
-                  colors: [
-                    Colors.blueAccent[200]!,
-                    Colors.purpleAccent[100]!,
-                  ],
+        ),
+        Column(
+          children: [
+            const SizedBox(height: 100),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GradientText(
+                'Milestones',
+                style: const TextStyle(
+                  fontSize: 50.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 3,
                 ),
+                colors: [
+                  Colors.blueAccent[200]!,
+                  Colors.purpleAccent[100]!,
+                ],
               ),
-              const SizedBox(height: 100),
-              _message(),
-              const SizedBox(height: 50),
-              _roadmap(),
-            ],
-          ),
-        ],
-      ),
+            ),
+            const SizedBox(height: 100),
+            _message(),
+            const SizedBox(height: 50),
+            _roadmap(),
+          ],
+        ),
+      ],
     );
   }
 

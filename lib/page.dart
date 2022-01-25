@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_improved_scrolling/flutter_improved_scrolling.dart';
 import 'package:nft_charities/custom_widgets/bottom_bar.dart';
 import 'package:nft_charities/custom_widgets/top_bar.dart';
 import 'package:nft_charities/models/milestone.dart';
@@ -10,6 +11,41 @@ import 'package:nft_charities/pages/roadmap.dart';
 import 'package:nft_charities/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+
+class CustomScrollBehaviour extends MaterialScrollBehavior {
+  const CustomScrollBehaviour();
+
+  @override
+  Widget buildScrollbar(
+      BuildContext context,
+      Widget child,
+      ScrollableDetails details,
+      ) {
+    switch (getPlatform(context)) {
+      case TargetPlatform.linux:
+      case TargetPlatform.macOS:
+        return Scrollbar(
+          controller: details.controller,
+          isAlwaysShown: true,
+          child: child,
+        );
+      case TargetPlatform.windows:
+        return Scrollbar(
+          controller: details.controller,
+          isAlwaysShown: true,
+          radius: Radius.zero,
+          thickness: 16.0,
+          hoverThickness: 16.0,
+          showTrackOnHover: true,
+          child: child,
+        );
+      case TargetPlatform.android:
+      case TargetPlatform.fuchsia:
+      case TargetPlatform.iOS:
+        return child;
+    }
+  }
+}
 
 class ParentPage extends StatefulWidget {
   const ParentPage({Key? key}) : super(key: key);
@@ -54,6 +90,71 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
+      body: ImprovedScrolling(
+        scrollController: _scrollController,
+        enableMMBScrolling: true,
+        enableKeyboardScrolling: true,
+        enableCustomMouseWheelScrolling: true,
+        mmbScrollConfig: const MMBScrollConfig(
+          customScrollCursor: DefaultCustomScrollCursor(),
+        ),
+        keyboardScrollConfig: KeyboardScrollConfig(
+          arrowsScrollAmount: 250.0,
+          homeScrollDurationBuilder: (currentScrollOffset, minScrollOffset) {
+            return const Duration(milliseconds: 100);
+          },
+          endScrollDurationBuilder: (currentScrollOffset, maxScrollOffset) {
+            return const Duration(milliseconds: 2000);
+          },
+        ),
+        customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
+          scrollAmountMultiplier: 2.0,
+        ),
+        child: ScrollConfiguration(
+          behavior: const CustomScrollBehaviour(),
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            child: Column(
+              children: [
+                TopBar(
+                  home: () {
+                    setState(() {
+                      _currPage = 0;
+                    });
+                  },
+                  roadmap: () {
+                    setState(() {
+                      _currPage = 1;
+                    });
+                  },
+                  collections: () {
+                    setState(() {
+                      _currPage = 2;
+                    });
+                  },
+                  about: () {
+                    setState(() {
+                      _currPage = 3;
+                    });
+                  },
+                ),
+                _pages[_currPage],
+                const BottomBar(),
+              ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: _showBackToTopButton == false ? null : FloatingActionButton(
+        onPressed: _scrollToTop,
+        child: const Icon(Icons.arrow_upward),
+        backgroundColor: Colors.grey[900],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+    );
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
       body: SingleChildScrollView(

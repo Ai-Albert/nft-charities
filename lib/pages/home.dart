@@ -18,26 +18,21 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  final ScrollController _scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: _scrollController,
-      child: Column(
-        children: [
-          _opening(),
-          _mission(),
-          SizedBox(
-            child: const Divider(
-              thickness: 2,
-              color: Color.fromRGBO(40, 40, 40, 1),
-            ),
-            width: MediaQuery.of(context).size.width - 200,
+    return Column(
+      children: [
+        _opening(),
+        _mission(),
+        SizedBox(
+          child: const Divider(
+            thickness: 2,
+            color: Color.fromRGBO(40, 40, 40, 1),
           ),
-          _social(),
-        ],
-      ),
+          width: MediaQuery.of(context).size.width - 200,
+        ),
+        _social(),
+      ],
     );
   }
 
@@ -57,14 +52,6 @@ class _HomeState extends State<Home> {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
-          // Positioned.fill(
-          //   child: Image.asset(
-          //     'ocean.jpg',
-          //     height: MediaQuery.of(context).size.height - 70,
-          //     width: MediaQuery.of(context).size.width,
-          //     fit: BoxFit.fill,
-          //   ),
-          // ),
           Image.asset(
             'assets/ocean.jpg', // TODO: change this when a new collection comes out
             height: MediaQuery.of(context).size.height - 70,
@@ -210,16 +197,6 @@ class _HomeState extends State<Home> {
         SizedBox(
           width: MediaQuery.of(context).size.width / 2 - 250,
           height: 400,
-          // child: Stack(
-          //   children: [
-          //     Positioned.fill(
-          //       // child: Image.asset(
-          //       //   'illustrations/giving.png',
-          //       //   fit: BoxFit.contain,
-          //       // ),
-          //     ),
-          //   ],
-          // ),
           child: Image.asset(
             'assets/giving.png',
             fit: BoxFit.contain,
@@ -236,16 +213,6 @@ class _HomeState extends State<Home> {
         SizedBox(
           width: MediaQuery.of(context).size.width / 2 - 250,
           height: 400,
-          // child: Stack(
-          //   children: [
-          //     Positioned.fill(
-          //       child: Image.asset(
-          //         'illustrations/eth_coin.png',
-          //         fit: BoxFit.contain,
-          //       ),
-          //     ),
-          //   ],
-          // ),
           child: Image.asset(
             'assets/eth_coin.png',
             fit: BoxFit.contain,

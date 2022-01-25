@@ -16,17 +16,6 @@ class _AboutState extends State<About> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: _scrollController,
-      child: Column(
-        children: [
-          _buildBody(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBody() {
     return Container(
       width: MediaQuery.of(context).size.width,
       constraints: BoxConstraints(
@@ -100,14 +89,6 @@ class _AboutState extends State<About> {
       width: (MediaQuery.of(context).size.width - 300) / 3,
       child: Column(
         children: [
-          // Positioned.fill(
-          //   child: Image.asset(
-          //     picture,
-          //     height: 200,
-          //     width: 200,
-          //     fit: BoxFit.contain,
-          //   ),
-          // ),
           Image.asset(
             picture,
             height: 200,
@@ -233,14 +214,6 @@ class _AboutState extends State<About> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Positioned.fill(
-        //   child: Image.asset(
-        //     picture,
-        //     height: 250,
-        //     width: 200,
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
         Image.asset(
           picture,
           height: 250,
