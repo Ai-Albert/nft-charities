@@ -66,14 +66,14 @@ class _AboutState extends State<About> {
           children: [
             const SizedBox(width: 100),
             _value(
-              'illustrations/window.png',
+              'assets/window.png',
               'Transparency',
               'When working with us, you will always know where the money you donated is going and you will always be able to know what it is doing. '
                   'We will always show how much we raised for a collection and proof of donations for your peace of mind.',
             ),
             const SizedBox(width: 50),
             _value(
-              'illustrations/scales.png',
+              'assets/scales.png',
               'Integrity',
               'We will never go against the core ways in which we operate. '
                   'Our company will always be straightforward with how we work, '
@@ -81,7 +81,7 @@ class _AboutState extends State<About> {
             ),
             const SizedBox(width: 50),
             _value(
-              'illustrations/sprout.png',
+              'assets//sprout.png',
               'Growth',
               'We believe in helping others, but we do that through NFT-Charities. '
                 'When we grow, we donate more, more people get to live better lives, and the world becomes a better place. '
@@ -205,7 +205,7 @@ class _AboutState extends State<About> {
             children: [
               const SizedBox(width: 100),
               _bio(
-                'headshots/michael-northrup.jpg',
+                'assets/michael-northrup.jpg',
                 'Michael J. Northrup',
                 'Co-founder, Marketing Lead',
                 'Michael is a double major, studying for his Masters in Business Administration and a B.S. in Public Accounting. '
@@ -214,7 +214,7 @@ class _AboutState extends State<About> {
               ),
               const SizedBox(width: 50),
               _bio(
-                'headshots/albert-ai.jpg',
+                'assets/albert-ai.jpg',
                 'Albert Ai',
                 'Co-founder, Technical Lead',
                 'Albert is a Mathematics - Computer Science major at UCSD, and is slated to enter his first internship in Summer 2022. '

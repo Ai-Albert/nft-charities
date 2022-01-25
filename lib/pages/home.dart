@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
           //   ),
           // ),
           Image.asset(
-            'ocean.jpg',
+            'assets/ocean.jpg', // TODO: change this when a new collection comes out
             height: MediaQuery.of(context).size.height - 70,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.fill,
@@ -221,7 +221,7 @@ class _HomeState extends State<Home> {
           //   ],
           // ),
           child: Image.asset(
-            'illustrations/giving.png',
+            'assets/giving.png',
             fit: BoxFit.contain,
           ),
         ),
@@ -247,7 +247,7 @@ class _HomeState extends State<Home> {
           //   ],
           // ),
           child: Image.asset(
-            'illustrations/eth_coin.png',
+            'assets/eth_coin.png',
             fit: BoxFit.contain,
           ),
         ),
@@ -293,7 +293,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _profiles(),
-            _twitterFeed(),
+            //_twitterFeed(),
           ],
         ),
       ),
@@ -326,10 +326,10 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _socialButton('socials/instagram.png', 'Instagram', 'https://www.instagram.com/nft.charities/'),
-              _socialButton('socials/twitter.png', 'Twitter', 'https://twitter.com/nft_charities'),
-              // _socialButton('socials/facebook.png', 'Facebook', ''), // TODO: update when facebook and tiktok are set up
-              // _socialButton('socials/tiktok.png', 'TikTok', ''),
+              _socialButton('assets/instagram.png', 'Instagram', 'https://www.instagram.com/nft.charities/'),
+              _socialButton('assets/twitter.png', 'Twitter', 'https://twitter.com/nft_charities'),
+              // _socialButton('assets/facebook.png', 'Facebook', ''), // TODO: update when facebook and tiktok are set up
+              // _socialButton('assets/tiktok.png', 'TikTok', ''),
             ],
           ),
         ],

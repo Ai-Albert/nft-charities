@@ -57,7 +57,7 @@ class _CollectionsState extends State<Collections> {
         ),
         const SizedBox(height: 25),
         Image.asset(
-          'illustrations/piggy_bank.png',
+          'assets/piggy_bank.png',
           width: 300,
           fit: BoxFit.contain,
         ),

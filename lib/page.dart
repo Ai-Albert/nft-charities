@@ -20,7 +20,7 @@ class ParentPage extends StatefulWidget {
 
 class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
   bool _showBackToTopButton = false;
-  final List<Widget> _pages = [const Home(), Roadmap(), Collections(), const About()];
+  final List<Widget> _pages = [const Home(), const Roadmap(), const Collections(), const About()];
   int _currPage = 0;
 
   late ScrollController _scrollController;

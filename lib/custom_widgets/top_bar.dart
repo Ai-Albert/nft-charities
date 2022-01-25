@@ -36,7 +36,7 @@ class TopBar extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                child: Image.asset('pfp.jpg', height: 50, width: 50),
+                child: Image.asset('assets/pfp.jpg', height: 50, width: 50),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
