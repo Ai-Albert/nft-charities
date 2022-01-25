@@ -257,7 +257,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _profiles(),
-            //_twitterFeed(),
+            _twitterFeed(),
           ],
         ),
       ),
@@ -339,11 +339,14 @@ class _HomeState extends State<Home> {
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       'twitter',
-          (int viewId) => IFrameElement()
-            ..src = 'web/twitter.html'
-            ..style.border = "none"
-            ..style.width = '100%'
-            ..style.height = '100%',
+          (int viewId) {
+            IFrameElement _iFrame = IFrameElement();
+            _iFrame.src = "twitter.html";
+            _iFrame.style.width = "100%";
+            _iFrame.style.height = "100%";
+            _iFrame.style.border = "none";
+            return _iFrame;
+          },
     );
     return SizedBox(
       width: MediaQuery.of(context).size.width / 5 * 2 - 100,
