@@ -14,13 +14,13 @@ class _AboutState extends State<About> {
     return Container(
       width: MediaQuery.of(context).size.width,
       constraints: BoxConstraints(
-        minHeight: MediaQuery.of(context).size.height - 70,
+        minHeight: MediaQuery.of(context).size.height,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 110),
+          const SizedBox(height: 180),
           _values(),
           _whyUs(),
           _bios(),

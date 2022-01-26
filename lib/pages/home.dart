@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
 
   Widget _opening() {
     return Stack(
-      alignment: Alignment.center,
+      //alignment: Alignment.center,
       children: [
         _blurredBackground(),
         _greeting(),
@@ -45,21 +45,24 @@ class _HomeState extends State<Home> {
 
   Widget _blurredBackground() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 70,
+      height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
-          Image.asset(
-            'assets/ocean.jpg', // TODO: change this when a new collection comes out
-            height: MediaQuery.of(context).size.height - 70,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.fill,
+          Opacity(
+            opacity: 0.8,
+            child: Image.asset(
+              'assets/ocean.jpg', // TODO: change this when a new collection comes out
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+            ),
           ),
           ClipRect(
             child: BackdropFilter(
-              filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              filter: ui.ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
               child: SizedBox(
-                height: MediaQuery.of(context).size.height - 70,
+                height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
               ),
             ),

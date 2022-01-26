@@ -20,11 +20,12 @@ class _CollectionsState extends State<Collections> {
     return Container(
       width: MediaQuery.of(context).size.width,
       constraints: BoxConstraints(
-        minHeight: MediaQuery.of(context).size.height - 70,
-        maxHeight: MediaQuery.of(context).size.height - 70,
+        minHeight: MediaQuery.of(context).size.height,
+        maxHeight: MediaQuery.of(context).size.height,
       ),
       child: Column(
         children: [
+          const SizedBox(height: 180),
           _buildDonationAmount(),
           _buildCollections(),
         ],
@@ -35,7 +36,6 @@ class _CollectionsState extends State<Collections> {
   Widget _buildDonationAmount() {
     return Column(
       children: [
-        const SizedBox(height: 110),
         GradientText(
           'Total Donations',
           style: const TextStyle(

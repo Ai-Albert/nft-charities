@@ -7,6 +7,8 @@ import 'package:nft_charities/pages/collections.dart';
 import 'package:nft_charities/pages/home.dart';
 import 'package:nft_charities/pages/roadmap.dart';
 
+import 'custom_widgets/top_bar_button.dart';
+
 class CustomScrollBehaviour extends MaterialScrollBehavior {
   const CustomScrollBehaviour();
 
@@ -55,6 +57,10 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
   int _currPage = 0;
 
   late ScrollController _scrollController;
+  double _scrollPosition = 0;
+  double _opacity = 0;
+
+  List isHovering = [false, false, false, false];
 
   @override
   void initState() {
@@ -68,6 +74,12 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
         else {
           _showBackToTopButton = false; // hide the back-to-top button
         }
+      });
+    });
+
+    _scrollController.addListener(() {
+      setState(() {
+        _scrollPosition = _scrollController.position.pixels;
       });
     });
   }
@@ -85,8 +97,15 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    _opacity = _scrollPosition < screenSize.height
+        ? _scrollPosition / (screenSize.height)
+        : 1;
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
+      appBar: _topBar(),
+      extendBodyBehindAppBar: true,
       body: ImprovedScrolling(
         scrollController: _scrollController,
         enableMMBScrolling: true,
@@ -109,32 +128,10 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
         ),
         child: ScrollConfiguration(
           behavior: const CustomScrollBehaviour(),
-          child: SingleChildScrollView(
+          child: SingleChildScrollView( // TODO: check pub.dev for smooth scrolling
             controller: _scrollController,
             child: Column(
               children: [
-                TopBar(
-                  home: () {
-                    setState(() {
-                      _currPage = 0;
-                    });
-                  },
-                  roadmap: () {
-                    setState(() {
-                      _currPage = 1;
-                    });
-                  },
-                  collections: () {
-                    setState(() {
-                      _currPage = 2;
-                    });
-                  },
-                  about: () {
-                    setState(() {
-                      _currPage = 3;
-                    });
-                  },
-                ),
                 _pages[_currPage],
                 const BottomBar(),
               ],
@@ -147,6 +144,36 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
         child: const Icon(Icons.arrow_upward),
         backgroundColor: Colors.grey[900],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+    );
+  }
+
+  PreferredSizeWidget _topBar() {
+    var screenSize = MediaQuery.of(context).size;
+    return PreferredSize(
+      preferredSize: Size(screenSize.width, 1000),
+      child: TopBar(
+        home: () {
+          setState(() {
+            _currPage = 0;
+          });
+        },
+        roadmap: () {
+          setState(() {
+            _currPage = 1;
+          });
+        },
+        collections: () {
+          setState(() {
+            _currPage = 2;
+          });
+        },
+        about: () {
+          setState(() {
+            _currPage = 3;
+          });
+        },
+        opacity: _opacity,
       ),
     );
   }

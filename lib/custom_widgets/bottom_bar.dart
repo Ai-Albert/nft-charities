@@ -7,7 +7,7 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: const Color.fromRGBO(35, 35, 35, 1),
       child: Column(
         children: [
           SizedBox(
@@ -23,7 +23,9 @@ class BottomBar extends StatelessWidget {
                 child: Text(
                   '© NFT-Charities',
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: 10,
+                    letterSpacing: 1,
                   ),
                 ),
               ),

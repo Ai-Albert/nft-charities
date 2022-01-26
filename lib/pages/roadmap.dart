@@ -20,18 +20,17 @@ class _RoadmapState extends State<Roadmap> {
 
   @override
   Widget build(BuildContext context) {
-
     return Stack(
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
           constraints: BoxConstraints(
-            minHeight: MediaQuery.of(context).size.height - 70,
+            minHeight: MediaQuery.of(context).size.height,
           ),
         ),
         Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 170),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: GradientText(
