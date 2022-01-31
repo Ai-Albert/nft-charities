@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:nft_charities/custom_widgets/primary_button.dart';
 import 'package:nft_charities/custom_widgets/secondary_button.dart';
+import 'package:nft_charities/responsive_widget.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,7 +27,9 @@ class _HomeState extends State<Home> {
             thickness: 2,
             color: Color.fromRGBO(40, 40, 40, 1),
           ),
-          width: MediaQuery.of(context).size.width - 200,
+          width: ResponsiveWidget.isSmallScreen(context) ?
+            MediaQuery.of(context).size.width - 100 :
+            MediaQuery.of(context).size.width - 200,
         ),
         _social(),
       ],
@@ -35,7 +38,6 @@ class _HomeState extends State<Home> {
 
   Widget _opening() {
     return Stack(
-      //alignment: Alignment.center,
       children: [
         _blurredBackground(),
         _greeting(),
@@ -55,7 +57,7 @@ class _HomeState extends State<Home> {
               'assets/ocean.jpg', // TODO: change this when a new collection comes out
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           ClipRect(
@@ -74,41 +76,101 @@ class _HomeState extends State<Home> {
 
   Widget _greeting() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 70,
+      height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SelectableText(
-            'The world\'s first NFT-based fundraiser for charities',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 3,
-            ),
+      child: ResponsiveWidget.isSmallScreen(context) ? phoneGreeting() : desktopGreeting(),
+    );
+  }
+
+  Widget desktopGreeting() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SelectableText(
+          'The world\'s first NFT-based fundraiser for charities',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 50,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 3,
           ),
-          const SizedBox(height: 75),
-          const SelectableText(
-            'Help clean the ocean today with our most recent collection (minting on OpenSea)', // TODO: change this message every time a new collection drops
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              letterSpacing: 2,
-            ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 75),
+        const SelectableText(
+          'Help clean the ocean today with our most recent collection (minting on OpenSea)', // TODO: change this message every time a new collection drops
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+            letterSpacing: 2,
           ),
-          const SizedBox(height: 50),
-          const Icon(Icons.arrow_downward,
-              size: 50, color: Colors.white),
-          const SizedBox(height: 50),
-          _siteButtons(),
-        ],
-      ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 50),
+        const Icon(Icons.arrow_downward,
+            size: 50, color: Colors.white),
+        const SizedBox(height: 50),
+        _siteButtons(),
+      ],
+    );
+  }
+
+  Widget phoneGreeting() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SelectableText(
+          'Welcome to\nNFT-Charities',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 3,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 50),
+        const Icon(Icons.arrow_downward,
+            size: 50, color: Colors.white),
+        const SizedBox(height: 50),
+        _siteButtons(),
+      ],
     );
   }
 
   Widget _siteButtons() {
-    return Row(
+    return ResponsiveWidget.isSmallScreen(context) ?
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        PrimaryButton(
+          label: 'Visit our OpenSea',
+          onPressed: () async {
+            const url = "https://opensea.io/NFT-Charities";
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw "Could not launch $url";
+            }
+          },
+        ),
+        const SizedBox(height: 25),
+        SecondaryButton(
+          label: 'Visit our Rarible',
+          onPressed: () async {
+            const url = "https://rarible.com/nft-charities";
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw "Could not launch $url";
+            }
+          },
+        ),
+      ],
+    ) :
+    Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         PrimaryButton(
@@ -147,7 +209,9 @@ class _HomeState extends State<Home> {
 
   Widget _missionContent() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(200, 100, 200, 100),
+      padding: ResponsiveWidget.isSmallScreen(context) ?
+        const EdgeInsets.fromLTRB(50, 25, 50, 25) :
+        const EdgeInsets.fromLTRB(200, 100, 200, 100),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -161,7 +225,35 @@ class _HomeState extends State<Home> {
   }
 
   Widget _missionContentOne() {
-    return Row(
+    return ResponsiveWidget.isSmallScreen(context) ?
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(width: MediaQuery.of(context).size.width),
+        GradientText(
+          'Our Mission',
+          style: const TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2,
+          ),
+          colors: [
+            Colors.blueAccent[200]!,
+            Colors.purpleAccent[100]!,
+          ],
+        ),
+        const SizedBox(height: 15),
+        const SelectableText(
+          'Most NFTs on the market don\'t have any utility. '
+              'They don\'t serve any purpose or have any uses.\n\nHowever, we at NFT Charities see an opportunity for these tokens '
+              'to impact people not only through social spaces, but through charities as well.\n\n'
+              'By tapping into this new marketplace and partnering with artists in this space, we will be able to raise '
+              'more money for these causes than by conventional means.',
+          style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1, color: Colors.white),
+        ),
+      ],
+    ) :
+    Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
@@ -184,8 +276,8 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 30),
               const SelectableText(
                 'Most NFTs on the market don\'t have any utility. '
-                    'They don\'t serve any purpose or have any uses. However, we at NFT Charities see an opportunity for these tokens '
-                    'to impact people not only through social spaces, but through charities as well. '
+                    'They don\'t serve any purpose or have any uses.\n\nHowever, we at NFT Charities see an opportunity for these tokens '
+                    'to impact people not only through social spaces, but through charities as well.\n\n'
                     'By tapping into this new marketplace and partnering with artists in this space, we will be able to raise '
                     'more money for these causes than by conventional means.',
                 style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1, color: Colors.white),
@@ -207,7 +299,33 @@ class _HomeState extends State<Home> {
   }
 
   Widget _missionContentTwo() {
-    return Row(
+    return ResponsiveWidget.isSmallScreen(context) ?
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GradientText(
+          'How It Works',
+          style: const TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2,
+          ),
+          colors: [
+            Colors.blueAccent[200]!,
+            Colors.purpleAccent[100]!,
+          ],
+        ),
+        const SizedBox(height: 15),
+        const SelectableText(
+          '\u2022 75% of initial sales proceeds are equally donated to the charities listed in the collection description\n'
+              '\u2022 75% of the 10% secondary sale royalties are also donated\n'
+              '\u2022 The rest of the proceeds go towards marketing, development, etc... costs\n'
+              '\u2022 Receipts/proof of donations will be posted on our Twitter at the end of each week in which we receive proceeds\n',
+          style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1,color: Colors.white),
+        ),
+      ],
+    ) :
+    Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
@@ -253,10 +371,12 @@ class _HomeState extends State<Home> {
 
   Widget _social() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(80, 50, 100, 50),
+      padding: ResponsiveWidget.isSmallScreen(context) ?
+        const EdgeInsets.fromLTRB(40, 25, 40, 25) :
+        const EdgeInsets.fromLTRB(80, 50, 100, 50),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: Row(
+        child: ResponsiveWidget.isSmallScreen(context) ? _profiles() : Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _profiles(),
@@ -295,8 +415,8 @@ class _HomeState extends State<Home> {
             children: [
               _socialButton('assets/instagram.png', 'Instagram', 'https://www.instagram.com/nft.charities/'),
               _socialButton('assets/twitter.png', 'Twitter', 'https://twitter.com/nft_charities'),
-              // _socialButton('assets/facebook.png', 'Facebook', ''), // TODO: update when facebook and tiktok are set up
-              // _socialButton('assets/tiktok.png', 'TikTok', ''),
+              // _socialButton('assets/facebook.png', 'Facebook', ''), // TODO: update when facebook is set up
+              _socialButton('assets/tiktok.png', 'TikTok', 'https://vm.tiktok.com/TTPdhS7cJD/'),
             ],
           ),
         ],
@@ -313,8 +433,8 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(icon, width: 50, height: 50),
-          const SizedBox(width: 5),
-          GradientText(
+          ResponsiveWidget.isSmallScreen(context) ? Container() : const SizedBox(width: 5),
+          ResponsiveWidget.isSmallScreen(context) ? Container() :GradientText(
             name,
             style: const TextStyle(
               fontSize: 20.0,
@@ -325,7 +445,7 @@ class _HomeState extends State<Home> {
               Colors.purpleAccent[100]!,
             ],
           ),
-          const SizedBox(width: 20),
+          ResponsiveWidget.isSmallScreen(context) ? Container() :const SizedBox(width: 20),
         ],
       ),
       onPressed: () async {

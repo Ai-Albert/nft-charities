@@ -6,6 +6,7 @@ import 'package:nft_charities/pages/about.dart';
 import 'package:nft_charities/pages/collections.dart';
 import 'package:nft_charities/pages/home.dart';
 import 'package:nft_charities/pages/roadmap.dart';
+import 'package:nft_charities/responsive_widget.dart';
 
 import 'custom_widgets/top_bar_button.dart';
 
@@ -104,7 +105,12 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
-      appBar: _topBar(),
+      appBar: ResponsiveWidget.isSmallScreen(context) ?
+        PreferredSize(
+          preferredSize: Size(screenSize.width, 1000),
+          child: Container(),
+        ) :
+        _topBar(),
       extendBodyBehindAppBar: true,
       body: ImprovedScrolling(
         scrollController: _scrollController,
@@ -129,6 +135,7 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
         child: ScrollConfiguration(
           behavior: const CustomScrollBehaviour(),
           child: SingleChildScrollView( // TODO: check pub.dev for smooth scrolling
+            physics: const NeverScrollableScrollPhysics(),
             controller: _scrollController,
             child: Column(
               children: [

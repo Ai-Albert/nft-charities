@@ -9,13 +9,17 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
-        child: Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
+      child: SizedBox(
+        width: 225,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+          child: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+            textAlign: TextAlign.center,
           ),
         ),
       ),
