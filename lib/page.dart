@@ -130,12 +130,12 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
           },
         ),
         customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
-          scrollAmountMultiplier: 1.0,
+          scrollAmountMultiplier: 2.0,
         ),
         child: ScrollConfiguration(
           behavior: const CustomScrollBehaviour(),
           child: SingleChildScrollView( // TODO: check pub.dev for smooth scrolling
-            physics: const NeverScrollableScrollPhysics(),
+            physics: ResponsiveWidget.isSmallScreen(context) ? null : const NeverScrollableScrollPhysics(),
             controller: _scrollController,
             child: Column(
               children: [
