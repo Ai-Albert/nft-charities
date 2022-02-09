@@ -24,6 +24,7 @@ class _AboutState extends State<About> {
           _values(),
           _whyUs(),
           _bios(),
+          const SizedBox(height: 20),
         ],
       ),
     );
@@ -178,6 +179,7 @@ class _AboutState extends State<About> {
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(width: 100),
               _bio(
@@ -218,7 +220,7 @@ class _AboutState extends State<About> {
         const SizedBox(width: 15),
         SizedBox(
           width: (MediaQuery.of(context).size.width - 680) / 2,
-          height: 350,
+          //height: 350,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

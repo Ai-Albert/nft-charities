@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nft_charities/custom_widgets/bottom_bar_button.dart';
 
 class BottomBar extends StatelessWidget {
@@ -17,15 +18,17 @@ class BottomBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Text(
                   '© NFT-Charities',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    letterSpacing: 1,
+                  style: GoogleFonts.muli(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      letterSpacing: 1,
+                    ),
                   ),
                 ),
               ),
@@ -38,7 +41,7 @@ class BottomBar extends StatelessWidget {
               //     SizedBox(width: 20),
               //   ],
               // ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
           SizedBox(

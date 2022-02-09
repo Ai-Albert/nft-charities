@@ -112,40 +112,50 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
         ) :
         _topBar(),
       extendBodyBehindAppBar: true,
-      body: ImprovedScrolling(
-        scrollController: _scrollController,
-        enableMMBScrolling: true,
-        enableKeyboardScrolling: true,
-        enableCustomMouseWheelScrolling: true,
-        mmbScrollConfig: const MMBScrollConfig(
-          customScrollCursor: DefaultCustomScrollCursor(),
-        ),
-        keyboardScrollConfig: KeyboardScrollConfig(
-          arrowsScrollAmount: 75.0,
-          homeScrollDurationBuilder: (currentScrollOffset, minScrollOffset) {
-            return const Duration(milliseconds: 100);
-          },
-          endScrollDurationBuilder: (currentScrollOffset, maxScrollOffset) {
-            return const Duration(milliseconds: 2000);
-          },
-        ),
-        customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
-          scrollAmountMultiplier: 2.0,
-        ),
-        child: ScrollConfiguration(
-          behavior: const CustomScrollBehaviour(),
-          child: SingleChildScrollView( // TODO: check pub.dev for smooth scrolling
-            physics: ResponsiveWidget.isSmallScreen(context) ? null : const NeverScrollableScrollPhysics(),
-            controller: _scrollController,
-            child: Column(
-              children: [
-                _pages[_currPage],
-                const BottomBar(),
-              ],
-            ),
+      // body: ImprovedScrolling(
+      //   scrollController: _scrollController,
+      //   enableMMBScrolling: true,
+      //   enableKeyboardScrolling: true,
+      //   enableCustomMouseWheelScrolling: true,
+      //   mmbScrollConfig: const MMBScrollConfig(
+      //     customScrollCursor: DefaultCustomScrollCursor(),
+      //   ),
+      //   keyboardScrollConfig: KeyboardScrollConfig(
+      //     arrowsScrollAmount: 75.0,
+      //     homeScrollDurationBuilder: (currentScrollOffset, minScrollOffset) {
+      //       return const Duration(milliseconds: 100);
+      //     },
+      //     endScrollDurationBuilder: (currentScrollOffset, maxScrollOffset) {
+      //       return const Duration(milliseconds: 2000);
+      //     },
+      //   ),
+      //   customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
+      //     scrollAmountMultiplier: 2.0,
+      //   ),
+      //   child: ScrollConfiguration(
+      //     behavior: const CustomScrollBehaviour(),
+      //     child: SingleChildScrollView(
+      //       physics: ResponsiveWidget.isSmallScreen(context) ? null : const NeverScrollableScrollPhysics(),
+      //       controller: _scrollController,
+      //       child: Column(
+      //         children: [
+      //           _pages[_currPage],
+      //           const BottomBar(),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // ),
+      body: SingleChildScrollView(
+          controller: _scrollController,
+          physics: const ClampingScrollPhysics(),
+          child: Column(
+            children: [
+              _pages[_currPage],
+              const BottomBar(),
+            ],
           ),
         ),
-      ),
       floatingActionButton: _showBackToTopButton == false ? null : FloatingActionButton(
         onPressed: _scrollToTop,
         child: const Icon(Icons.arrow_upward),

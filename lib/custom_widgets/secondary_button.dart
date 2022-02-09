@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton({Key? key, required this.label, required this.onPressed}) : super(key: key);
@@ -15,9 +16,11 @@ class SecondaryButton extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
           child: Text(
             label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
             textAlign: TextAlign.center,
           ),

@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nft_charities/custom_widgets/primary_button.dart';
 import 'package:nft_charities/custom_widgets/secondary_button.dart';
 import 'package:nft_charities/responsive_widget.dart';
@@ -87,23 +88,27 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SelectableText(
+        SelectableText(
           'The world\'s first NFT-based fundraiser for charities',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 3,
+          style: GoogleFonts.muli(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 3,
+            ),
           ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 75),
-        const SelectableText(
+        SelectableText(
           'Help clean the ocean today with our most recent collection (minting on OpenSea)', // TODO: change this message every time a new collection drops
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            letterSpacing: 2,
+          style: GoogleFonts.muli(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              letterSpacing: 2,
+            ),
           ),
           textAlign: TextAlign.center,
         ),
@@ -121,13 +126,15 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SelectableText(
+        SelectableText(
           'Welcome to\nNFT-Charities',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 3,
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 3,
+            ),
           ),
           textAlign: TextAlign.center,
         ),
@@ -232,10 +239,12 @@ class _HomeState extends State<Home> {
         SizedBox(width: MediaQuery.of(context).size.width),
         GradientText(
           'Our Mission',
-          style: const TextStyle(
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
+          style: GoogleFonts.muli(
+            textStyle: const TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+            ),
           ),
           colors: [
             Colors.blueAccent[200]!,
@@ -243,13 +252,15 @@ class _HomeState extends State<Home> {
           ],
         ),
         const SizedBox(height: 15),
-        const SelectableText(
+        SelectableText(
           'Most NFTs on the market don\'t have any utility. '
               'They don\'t serve any purpose or have any uses.\n\nHowever, we at NFT Charities see an opportunity for these tokens '
               'to impact people not only through social spaces, but through charities as well.\n\n'
               'By tapping into this new marketplace and partnering with artists in this space, we will be able to raise '
               'more money for these causes than by conventional means.',
-          style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1, color: Colors.white),
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1, color: Colors.white),
+          ),
         ),
       ],
     ) :
@@ -263,10 +274,12 @@ class _HomeState extends State<Home> {
             children: [
               GradientText(
                 'Our Mission',
-                style: const TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
+                style: GoogleFonts.muli(
+                  textStyle: const TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                  ),
                 ),
                 colors: [
                   Colors.blueAccent[200]!,
@@ -274,13 +287,15 @@ class _HomeState extends State<Home> {
                 ],
               ),
               const SizedBox(height: 30),
-              const SelectableText(
+              SelectableText(
                 'Most NFTs on the market don\'t have any utility. '
                     'They don\'t serve any purpose or have any uses.\n\nHowever, we at NFT Charities see an opportunity for these tokens '
                     'to impact people not only through social spaces, but through charities as well.\n\n'
                     'By tapping into this new marketplace and partnering with artists in this space, we will be able to raise '
                     'more money for these causes than by conventional means.',
-                style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1, color: Colors.white),
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1, color: Colors.white),
+                ),
               ),
             ],
           ),
@@ -305,10 +320,12 @@ class _HomeState extends State<Home> {
       children: [
         GradientText(
           'How It Works',
-          style: const TextStyle(
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
+          style: GoogleFonts.muli(
+            textStyle: const TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+            ),
           ),
           colors: [
             Colors.blueAccent[200]!,
@@ -316,12 +333,14 @@ class _HomeState extends State<Home> {
           ],
         ),
         const SizedBox(height: 15),
-        const SelectableText(
+        SelectableText(
           '\u2022 75% of initial sales proceeds are equally donated to the charities listed in the collection description\n'
               '\u2022 75% of the 10% secondary sale royalties are also donated\n'
               '\u2022 The rest of the proceeds go towards marketing, development, etc... costs\n'
               '\u2022 Receipts/proof of donations will be posted on our Twitter at the end of each week in which we receive proceeds\n',
-          style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1,color: Colors.white),
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1,color: Colors.white),
+          ),
         ),
       ],
     ) :
@@ -344,10 +363,12 @@ class _HomeState extends State<Home> {
             children: [
               GradientText(
                 'How It Works',
-                style: const TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
+                style: GoogleFonts.muli(
+                  textStyle: const TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                  ),
                 ),
                 colors: [
                   Colors.blueAccent[200]!,
@@ -355,12 +376,14 @@ class _HomeState extends State<Home> {
                 ],
               ),
               const SizedBox(height: 30),
-              const SelectableText(
+              SelectableText(
                 '\u2022 75% of initial sales proceeds are equally donated to the charities listed in the collection description\n'
                   '\u2022 75% of the 10% secondary sale royalties are also donated\n'
                   '\u2022 The rest of the proceeds go towards marketing, development, etc... costs\n'
                   '\u2022 Receipts/proof of donations will be posted on our Twitter at the end of each week in which we receive proceeds\n',
-                style: TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1,color: Colors.white),
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(fontSize: 20, height: 1.5, letterSpacing: 1,color: Colors.white),
+                ),
               ),
             ],
           ),
@@ -399,10 +422,12 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: GradientText(
               'Connect With Us',
-              style: const TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
+              style: GoogleFonts.muli(
+                textStyle: const TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                ),
               ),
               colors: [
                 Colors.blueAccent[200]!,
@@ -434,11 +459,13 @@ class _HomeState extends State<Home> {
         children: [
           Image.asset(icon, width: 50, height: 50),
           ResponsiveWidget.isSmallScreen(context) ? Container() : const SizedBox(width: 5),
-          ResponsiveWidget.isSmallScreen(context) ? Container() :GradientText(
+          ResponsiveWidget.isSmallScreen(context) ? Container() : GradientText(
             name,
-            style: const TextStyle(
-              fontSize: 20.0,
-              letterSpacing: 1,
+            style: GoogleFonts.muli(
+              textStyle: const TextStyle(
+                fontSize: 20.0,
+                letterSpacing: 1,
+              ),
             ),
             colors: [
               Colors.blueAccent[200]!,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TopBarButton extends StatefulWidget {
   TopBarButton({
@@ -34,10 +35,12 @@ class _TopBarButtonState extends State<TopBarButton> {
         children: [
           Text(
             widget.title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-              letterSpacing: 1,
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                letterSpacing: 1,
+              ),
             ),
           ),
           const SizedBox(height: 5),
@@ -55,28 +58,6 @@ class _TopBarButtonState extends State<TopBarButton> {
           )
         ],
       ),
-    );
-
-    return TextButton(
-      child: Text(
-        widget.title,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 17,
-        ),
-      ),
-      style: ButtonStyle(
-        overlayColor: MaterialStateProperty.all(Colors.transparent),
-        minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width / 15, 0)),
-      ),
-      // onPressed: () => Navigator.pushReplacement(
-      //   context,
-      //   PageRouteBuilder(
-      //     pageBuilder: builder,
-      //     transitionDuration: Duration.zero,
-      //   ),
-      // ),
-      onPressed: widget.onPressed,
     );
   }
 }

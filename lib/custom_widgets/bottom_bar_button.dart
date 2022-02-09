@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BottomBarButton extends StatelessWidget {
@@ -12,9 +13,11 @@ class BottomBarButton extends StatelessWidget {
     return TextButton(
       child: Text(
         title,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 10,
+        style: GoogleFonts.poppins(
+          textStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 10,
+          ),
         ),
       ),
       style: ButtonStyle(
