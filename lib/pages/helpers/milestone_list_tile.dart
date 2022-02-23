@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nft_charities/models/milestone.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -12,7 +13,7 @@ class MilestoneListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Container(
-        constraints: const BoxConstraints(minWidth: 450, maxWidth: 450),
+        constraints: const BoxConstraints(minWidth: 450, maxWidth: 500),
         child: Card(
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
           margin: const EdgeInsets.all(6.0),
@@ -33,9 +34,11 @@ class MilestoneListTile extends StatelessWidget {
           const SizedBox(height: 50),
           GradientText(
             '${milestone.number}',
-            style: const TextStyle(
-              fontSize: 30.0,
-              letterSpacing: 2,
+            style: GoogleFonts.muli(
+              textStyle: const TextStyle(
+                fontSize: 30.0,
+                letterSpacing: 2,
+              ),
             ),
             colors: [
               milestone.done ? Colors.white : Colors.blueAccent[200]!,
@@ -45,10 +48,12 @@ class MilestoneListTile extends StatelessWidget {
           const SizedBox(height: 50),
           SelectableText(
             milestone.goal,
-            style: const TextStyle(
-              fontSize: 20,
-              letterSpacing: 1,
-              color: Colors.white,
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                letterSpacing: 1,
+                color: Colors.white,
+              ),
             ),
             textAlign: TextAlign.center,
           ),

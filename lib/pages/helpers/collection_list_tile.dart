@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nft_charities/models/nft_collection.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -28,9 +29,11 @@ class CollectionListTile extends StatelessWidget {
         children: [
           GradientText(
             collection.name,
-            style: const TextStyle(
-              fontSize: 30.0,
-              letterSpacing: 2,
+            style: GoogleFonts.muli(
+              textStyle: const TextStyle(
+                fontSize: 30.0,
+                letterSpacing: 2,
+              ),
             ),
             colors: [
               Colors.blueAccent[200]!,
@@ -40,10 +43,12 @@ class CollectionListTile extends StatelessWidget {
           const SizedBox(width: 250),
           SelectableText(
             collection.formattedDate,
-            style: const TextStyle(
-              fontSize: 20,
-              letterSpacing: 1,
-              color: Colors.white,
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                letterSpacing: 1,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

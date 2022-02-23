@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
           Opacity(
             opacity: 0.8,
             child: Image.asset(
-              'assets/ocean.jpg', // TODO: change this when a new collection comes out
+              'assets/dog.jpg', // TODO: change this when a new collection comes out
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 75),
         SelectableText(
-          'Help clean the ocean today with our most recent collection (minting on OpenSea)', // TODO: change this message every time a new collection drops
+          'Help rescue dogs today with our most recent collection (minting on OpenSea)', // TODO: change this message every time a new collection drops
           style: GoogleFonts.muli(
             textStyle: const TextStyle(
               color: Colors.white,
@@ -403,7 +403,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _profiles(),
-            _twitterFeed(),
+            //_twitterFeed(),
           ],
         ),
       ),

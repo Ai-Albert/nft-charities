@@ -10,8 +10,10 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: SizedBox(
-        width: 225,
+      child: Container(
+        constraints: const BoxConstraints(
+          minWidth: 225,
+        ),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
           child: Text(

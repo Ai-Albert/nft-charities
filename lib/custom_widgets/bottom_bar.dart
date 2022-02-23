@@ -22,7 +22,7 @@ class BottomBar extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Text(
-                  '© NFT-Charities',
+                  '© 2022 NFT-Charities',
                   style: GoogleFonts.muli(
                     textStyle: const TextStyle(
                       color: Colors.white,

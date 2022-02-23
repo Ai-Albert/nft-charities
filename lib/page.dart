@@ -8,6 +8,7 @@ import 'package:nft_charities/pages/home.dart';
 import 'package:nft_charities/pages/roadmap.dart';
 import 'package:nft_charities/responsive_widget.dart';
 
+import 'custom_widgets/tab_drawer.dart';
 import 'custom_widgets/top_bar_button.dart';
 
 class CustomScrollBehaviour extends MaterialScrollBehavior {
@@ -106,56 +107,44 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
       appBar: ResponsiveWidget.isSmallScreen(context) ?
-        PreferredSize(
-          preferredSize: Size(screenSize.width, 1000),
-          child: Container(),
+        AppBar(
+          backgroundColor: const Color.fromRGBO(30, 30, 30, 1).withOpacity(_opacity),
+          elevation: 0,
         ) :
         _topBar(),
       extendBodyBehindAppBar: true,
-      // body: ImprovedScrolling(
-      //   scrollController: _scrollController,
-      //   enableMMBScrolling: true,
-      //   enableKeyboardScrolling: true,
-      //   enableCustomMouseWheelScrolling: true,
-      //   mmbScrollConfig: const MMBScrollConfig(
-      //     customScrollCursor: DefaultCustomScrollCursor(),
-      //   ),
-      //   keyboardScrollConfig: KeyboardScrollConfig(
-      //     arrowsScrollAmount: 75.0,
-      //     homeScrollDurationBuilder: (currentScrollOffset, minScrollOffset) {
-      //       return const Duration(milliseconds: 100);
-      //     },
-      //     endScrollDurationBuilder: (currentScrollOffset, maxScrollOffset) {
-      //       return const Duration(milliseconds: 2000);
-      //     },
-      //   ),
-      //   customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
-      //     scrollAmountMultiplier: 2.0,
-      //   ),
-      //   child: ScrollConfiguration(
-      //     behavior: const CustomScrollBehaviour(),
-      //     child: SingleChildScrollView(
-      //       physics: ResponsiveWidget.isSmallScreen(context) ? null : const NeverScrollableScrollPhysics(),
-      //       controller: _scrollController,
-      //       child: Column(
-      //         children: [
-      //           _pages[_currPage],
-      //           const BottomBar(),
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: SingleChildScrollView(
-          controller: _scrollController,
-          physics: const ClampingScrollPhysics(),
-          child: Column(
-            children: [
-              _pages[_currPage],
-              const BottomBar(),
-            ],
-          ),
+        controller: _scrollController,
+        physics: const ClampingScrollPhysics(),
+        child: Column(
+          children: [
+            _pages[_currPage],
+            const BottomBar(),
+          ],
         ),
+      ),
+      drawer: TabDrawer(
+        home: () {
+          setState(() {
+            _currPage = 0;
+          });
+        },
+        roadmap: () {
+          setState(() {
+            _currPage = 1;
+          });
+        },
+        collections: () {
+          setState(() {
+            _currPage = 2;
+          });
+        },
+        about: () {
+          setState(() {
+            _currPage = 3;
+          });
+        },
+      ),
       floatingActionButton: _showBackToTopButton == false ? null : FloatingActionButton(
         onPressed: _scrollToTop,
         child: const Icon(Icons.arrow_upward),
