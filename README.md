@@ -1,6 +1,6 @@
 # nft_charities
 
-The website for our new company.
+The website for our new company. nft_charities.org
 
 ## Getting Started
 
