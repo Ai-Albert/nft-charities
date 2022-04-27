@@ -14,6 +14,7 @@ class _AboutState extends State<About> {
     return Container(
       width: MediaQuery.of(context).size.width,
       constraints: BoxConstraints(
+        minWidth: 0,
         minHeight: MediaQuery.of(context).size.height,
       ),
       child: Column(

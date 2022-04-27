@@ -403,7 +403,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _profiles(),
-            //_twitterFeed(),
+            _twitterFeed(),
           ],
         ),
       ),

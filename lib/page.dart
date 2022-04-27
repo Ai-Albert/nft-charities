@@ -125,21 +125,25 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
       ),
       drawer: TabDrawer(
         home: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 0;
           });
         },
         roadmap: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 1;
           });
         },
         collections: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 2;
           });
         },
         about: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 3;
           });
@@ -160,21 +164,25 @@ class _ParentPageState extends State<ParentPage> with TickerProviderStateMixin {
       preferredSize: Size(screenSize.width, 1000),
       child: TopBar(
         home: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 0;
           });
         },
         roadmap: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 1;
           });
         },
         collections: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 2;
           });
         },
         about: () {
+          _scrollController.animateTo(0, duration: const Duration(milliseconds: 1), curve: Curves.linear);
           setState(() {
             _currPage = 3;
           });
